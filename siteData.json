@@ -10,7 +10,7 @@
         "casey-low": "Casey Low",
         "aiden-ma-jiayi": "Aiden Ma JiaYi",
         "ng-meng-jie": "Ng Meng Jie",
-        "jean-doe": "Jean Doe"
+        "ho-pei-ling": "Ho Pei Ling"
       },
       "headingKeywords": {}
     },
@@ -140,6 +140,11 @@
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/kin-chong.md",
+      "headings": {},
       "headingKeywords": {}
     }
   ]
