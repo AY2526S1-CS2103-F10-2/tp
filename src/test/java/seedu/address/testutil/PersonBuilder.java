@@ -8,6 +8,8 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Price;
+import seedu.address.model.person.PropertyType;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -20,11 +22,15 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_PROPERTY_TYPE = "hdb 4-room flat";
+    public static final String DEFAULT_PRICE = "1200000";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private PropertyType propertyType;
+    private Price price;
     private Set<Tag> tags;
 
     /**
@@ -35,6 +41,8 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        propertyType = new PropertyType(DEFAULT_PROPERTY_TYPE);
+        price = new Price(DEFAULT_PRICE);
         tags = new HashSet<>();
     }
 
@@ -46,6 +54,8 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        propertyType = personToCopy.getPropertyType();
+        price = personToCopy.getPrice();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -89,8 +99,24 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code PropertyType} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withPropertyType(String propertyType) {
+        this.propertyType = new PropertyType(propertyType);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Price} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withPrice(String price) {
+        this.price = new Price(price);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags);
+        return new Person(name, phone, email, address, propertyType, price, tags);
     }
 
 }

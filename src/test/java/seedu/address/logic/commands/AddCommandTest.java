@@ -56,7 +56,8 @@ public class AddCommandTest {
     @Test
     public void execute_duplicateName_addSuccessful() throws Exception {
         Person validPerson = new PersonBuilder().build();
-        Person sameNamePerson = new PersonBuilder().withPhone("91246521").withAddress("321 MacPherson Street").build();
+        Person sameNamePerson = new PersonBuilder().withPhone("91246521").withAddress("321 MacPherson Street")
+                .withPropertyType("hdb 3 room").withPrice("400000").build();
         ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
 
         new AddCommand(validPerson).execute(modelStub);

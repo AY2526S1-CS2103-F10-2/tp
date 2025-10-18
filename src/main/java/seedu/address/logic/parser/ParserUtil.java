@@ -13,6 +13,8 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Price;
+import seedu.address.model.person.PropertyType;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -78,6 +80,36 @@ public class ParserUtil {
             throw new ParseException(Address.MESSAGE_CONSTRAINTS);
         }
         return new Address(trimmedAddress);
+    }
+
+    /**
+     * Parses a {@code String property type} into a {@code PropertyType}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code property type} is invalid.
+     */
+    public static PropertyType parsePropertyType(String propertyType) throws ParseException {
+        requireNonNull(propertyType);
+        String trimmedPropertyType = propertyType.trim();
+        if (!PropertyType.isValidPropertyType(trimmedPropertyType)) {
+            throw new ParseException(PropertyType.MESSAGE_CONSTRAINTS);
+        }
+        return new PropertyType(trimmedPropertyType);
+    }
+
+    /**
+     * Parses a {@code String price} into a {@code Price}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code string} is invalid.
+     */
+    public static Price parsePrice(String price) throws ParseException {
+        requireNonNull(price);
+        String trimmedPrice = price.trim();
+        if (!Price.isValidPrice(trimmedPrice)) {
+            throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+        }
+        return new Price(trimmedPrice);
     }
 
     /**

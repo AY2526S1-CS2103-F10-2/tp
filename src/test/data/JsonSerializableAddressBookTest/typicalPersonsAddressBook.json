@@ -5,48 +5,64 @@
     "phone" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
+    "propertyType" : "HDB 4-room flat",
+    "price" : "950000",
     "tags" : [ "owesMoney", "friends" ]
   },  {
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
+    "propertyType" : "HDB 3-room flat",
+    "price" : "499000",
     "tags" : [ "friends" ]
   },  {
     "name" : "Carl Kurz",
     "phone" : "95352563",
     "email" : "heinz@example.com",
     "address" : "wall street",
+    "propertyType" : "semi detached house",
+    "price" : "12488888",
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
+    "propertyType" : "terrace house",
+    "price" : "4600000",
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
     "email" : "werner@example.com",
     "address" : "michegan ave",
+    "propertyType" : "terrace house",
+    "price" : "5580000",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
+    "propertyType" : "condo",
+    "price" : "1838000",
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "phone" : "9482442",
     "email" : "anna@example.com",
     "address" : "4th street",
+    "propertyType" : "corner terrace",
+    "price" : "3200000",
     "tags" : [ ]
   }, {
     "name" : "Alice Pauline",
     "phone" : "12345678",
     "email" : "pauline@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
+    "propertyType" : "HDB 5-room premium apartment",
+    "price" : "648888",
     "tags" : [ "friends" ]
   } ]
 }

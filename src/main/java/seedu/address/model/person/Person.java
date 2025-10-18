@@ -23,17 +23,23 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final PropertyType propertyType;
+    private final Price price;
     private final Set<Tag> tags = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, PropertyType propertyType, Price price,
+                  Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, propertyType, price, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.propertyType = propertyType;
+        this.price = price;
         this.tags.addAll(tags);
     }
 
@@ -51,6 +57,14 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public PropertyType getPropertyType() {
+        return propertyType;
+    }
+
+    public Price getPrice() {
+        return price;
     }
 
     /**
@@ -92,7 +106,9 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address);
+                && address.equals(otherPerson.address)
+                && propertyType.equals(otherPerson.propertyType)
+                && price.equals(otherPerson.price);
     }
 
     /**
@@ -115,13 +131,15 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
+                && propertyType.equals(otherPerson.propertyType)
+                && price.equals(otherPerson.price)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, propertyType, price, tags);
     }
 
     @Override
@@ -131,6 +149,8 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
+                .add("property type", propertyType)
+                .add("price", price)
                 .add("tags", tags)
                 .toString();
     }
