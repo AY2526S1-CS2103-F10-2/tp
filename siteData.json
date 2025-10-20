@@ -104,7 +104,6 @@
     },
     {
       "src": "UserGuide.md",
-      "title": "User Guide",
       "headings": {
         "propertypal-user-guide": "🏠 PropertyPal User Guide",
         "quick-start": "Quick start",
