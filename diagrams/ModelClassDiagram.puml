@@ -19,6 +19,9 @@ Class Email
 Class Name
 Class Phone
 Class Tag
+Class Price
+Class PropertyType
+Class Intention
 
 Class I #FFFFFF
 }
@@ -42,6 +45,9 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
+Person *--> Price
+Person *--> PropertyType
+Person *--> Intention
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
@@ -49,6 +55,9 @@ UniquePersonList -[hidden]right-> I
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
+Email -[hidden]right-> Price
+Price -[hidden]right-> PropertyType
+PropertyType -[hidden]right-> Intention
 
 ModelManager --> "~* filtered" Person
 @enduml

@@ -18,4 +18,13 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> Price
+Person *--> PropertyType
+Person *--> Intention
+
+' Keep visual order neat
+Address -[hidden]right-> Price
+Price -[hidden]right-> PropertyType
+PropertyType -[hidden]right-> Intention
+
 @enduml
