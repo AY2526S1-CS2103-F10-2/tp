@@ -307,12 +307,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case 1: Add a client contact**
 
 **Guarantees:**
-* Client details are saved if all fields are valid and unique. 
+* Client details are saved if all fields are valid and unique.
 * No duplicates will be created.
 
 **MSS**
 
-1.  User enters the add command with all required details in a single line. 
+1.  User enters the add command with all required details in a single line.
 2.  PropertyPal adds the new client and displays a success message.
 
     Use case ends.
@@ -339,7 +339,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Use case 2: Delete a client contact**
 
 **Guarantees:**
-* The specified client is removed from the list if a valid name is provided. 
+* The specified client is removed from the list if a valid name is provided.
 * No deletion occurs without user confirmation when multiple matches exist.
 
 **MSS**
@@ -422,7 +422,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. PropertyPal displays an error message indicating the correct format.
     * 1a2. User re-enters data.
 
-        Steps 1a1 - 1a2 are repeated until the input entered is valid. 
+        Steps 1a1 - 1a2 are repeated until the input entered is valid.
 
         Use case resumes from step 2.
 
