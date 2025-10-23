@@ -45,9 +45,9 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
-Person *--> Price
+Person *--> "1" Price
 Person *--> PropertyType
-Person *--> Intention
+Person *--> "1" Intention
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
