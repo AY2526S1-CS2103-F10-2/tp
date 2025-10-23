@@ -14,57 +14,89 @@ box Model MODEL_COLOR_T1
 participant "m:Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("delete 1")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("delete 1")
+LogicManager -> AddressBookParser : parseCommand("delete ...")
 activate AddressBookParser
 
 create DeleteCommandParser
-AddressBookParser -> DeleteCommandParser
+AddressBookParser -> DeleteCommandParser : parse(args)
 activate DeleteCommandParser
 
-DeleteCommandParser --> AddressBookParser
+alt args contain n/ (name prefixes)
+  alt single name
+    create DeleteCommand
+    DeleteCommandParser -> DeleteCommand : new DeleteCommand(Name)
+  else multiple names
+    create DeleteCommand
+    DeleteCommandParser -> DeleteCommand : new DeleteCommand(List<Name>, isConfirmed)
+  end
+else index provided
+  create DeleteCommand
+  DeleteCommandParser -> DeleteCommand : new DeleteCommand(Index)
+end
+
+DeleteCommandParser --> AddressBookParser : DeleteCommand
 deactivate DeleteCommandParser
-
-AddressBookParser -> DeleteCommandParser : parse("1")
-activate DeleteCommandParser
-
-create DeleteCommand
-DeleteCommandParser -> DeleteCommand
-activate DeleteCommand
-
-DeleteCommand --> DeleteCommandParser :
-deactivate DeleteCommand
-
-DeleteCommandParser --> AddressBookParser : d
-deactivate DeleteCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> AddressBookParser
 destroy DeleteCommandParser
 
-AddressBookParser --> LogicManager : d
+AddressBookParser --> LogicManager : DeleteCommand
 deactivate AddressBookParser
 
 LogicManager -> DeleteCommand : execute(m)
 activate DeleteCommand
 
-DeleteCommand -> Model : deletePerson(1)
-activate Model
+alt delete by index
+  DeleteCommand -> Model : deletePerson(personAt(Index))
+  activate Model
+  Model --> DeleteCommand : ok
+  deactivate Model
+  create CommandResult
+  DeleteCommand -> CommandResult : new CommandResult("Deleted Person")
+  activate CommandResult
+  CommandResult --> DeleteCommand : CommandResult
+  deactivate CommandResult
+  DeleteCommand --> LogicManager : CommandResult
+  deactivate DeleteCommand
+else delete by single name
+  DeleteCommand -> Model : find person by Name
+  DeleteCommand -> Model : deletePerson(person)
+  activate Model
+  Model --> DeleteCommand : ok
+  deactivate Model
+  create CommandResult
+  DeleteCommand -> CommandResult : new CommandResult("Deleted Person")
+  activate CommandResult
+  CommandResult --> DeleteCommand : CommandResult
+  deactivate CommandResult
+  DeleteCommand --> LogicManager : CommandResult
+  deactivate DeleteCommand
+else delete by multiple names
+  DeleteCommand -> Model : resolve names to persons
+  alt confirmation required (no confirm/yes)
+    create CommandResult
+    DeleteCommand -> CommandResult : new CommandResult(confirm prompt)
+    activate CommandResult
+    CommandResult --> DeleteCommand : CommandResult
+    deactivate CommandResult
+    DeleteCommand --> LogicManager : CommandResult
+    deactivate DeleteCommand
+  else confirmed
+    loop for each person
+      DeleteCommand -> Model : deletePerson(person)
+      activate Model
+      Model --> DeleteCommand : ok
+      deactivate Model
+    end
+    create CommandResult
+    DeleteCommand -> CommandResult : new CommandResult("Deleted N persons")
+    activate CommandResult
+    CommandResult --> DeleteCommand : CommandResult
+    deactivate CommandResult
+    DeleteCommand --> LogicManager : CommandResult
+    deactivate DeleteCommand
+  end
+end
 
-Model --> DeleteCommand
-deactivate Model
-
-create CommandResult
-DeleteCommand -> CommandResult
-activate CommandResult
-
-CommandResult --> DeleteCommand
-deactivate CommandResult
-
-DeleteCommand --> LogicManager : r
-deactivate DeleteCommand
-
-[<--LogicManager
 deactivate LogicManager
 @enduml
