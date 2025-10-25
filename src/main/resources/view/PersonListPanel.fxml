@@ -7,14 +7,14 @@
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@PersonListPanel.css">
   <TableView fx:id="personTableView" styleClass="person-table" VBox.vgrow="ALWAYS">
     <columns>
-      <TableColumn fx:id="colIndex" text="#" prefWidth="40" />
-      <TableColumn fx:id="colIntention" text="INTENT" prefWidth="60" />
-      <TableColumn fx:id="colName" text="NAME" prefWidth="160" />
-      <TableColumn fx:id="colPhone" text="PHONE" prefWidth="100" />
-      <TableColumn fx:id="colEmail" text="EMAIL" prefWidth="200" />
-      <TableColumn fx:id="colAddress" text="ADDRESS" prefWidth="260" />
-      <TableColumn fx:id="colPropertyType" text="PROPERTY TYPE" prefWidth="140" />
-      <TableColumn fx:id="colPrice" text="PRICE" prefWidth="90" />
+      <TableColumn fx:id="colIndex" text="#" minWidth="20" prefWidth="40" />
+      <TableColumn fx:id="colIntention" text="INTENT" minWidth="60" prefWidth="60" />
+      <TableColumn fx:id="colName" text="NAME" minWidth="80" prefWidth="160" />
+      <TableColumn fx:id="colPhone" text="PHONE" minWidth="80" prefWidth="100" />
+      <TableColumn fx:id="colEmail" text="EMAIL" minWidth="80" prefWidth="200" />
+      <TableColumn fx:id="colAddress" text="ADDRESS" minWidth="80" prefWidth="260" />
+      <TableColumn fx:id="colPropertyType" text="PROPERTY TYPE" minWidth="80" prefWidth="140" />
+      <TableColumn fx:id="colPrice" text="PRICE" minWidth="80" prefWidth="90" />
     </columns>
   </TableView>
 </VBox>

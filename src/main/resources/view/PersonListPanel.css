@@ -13,6 +13,10 @@
     -fx-background-insets: 0;
     -fx-border-color: rgba(255,255,255,0.10);
     -fx-border-width: 1;
+    /* Column drag colors */
+    -fx-accent-color: rgba(133, 30, 145, 0.5);
+    -fx-selection-bar: rgba(133, 30, 145, 0.5);
+    -fx-selection-bar-non-focused: rgba(133, 30, 145, 0.5);
 }
 
 /* Header styling */
@@ -25,6 +29,19 @@
 /* Header borders */
 .person-table .column-header, .person-table .column-header-background, .person-table .filler {
     -fx-border-color: transparent;
+}
+
+/* Column drag styling */
+.person-table .column-header:hover {
+    -fx-background-color: rgba(133, 30, 145, 0.3);
+}
+
+.person-table .column-header:drag-over {
+    -fx-background-color: rgba(133, 30, 145, 0.5);
+}
+
+.person-table .column-header:selected {
+    -fx-background-color: rgba(133, 30, 145, 0.5);
 }
 
 .person-table .text,
@@ -79,6 +96,43 @@
 /* Round the bottom corners of the last visible row to match table radius */
 .person-table .virtual-flow .clipped-container .sheet .table-row-cell:last-visible {
     -fx-background-radius: 0 0 8 8;
+}
+
+/* Column drag divider styling */
+.person-table .column-header .separator,
+.person-table .column-header .separator:hover,
+.person-table .table-view .column-header .separator,
+.person-table .column-header .separator:vertical,
+.person-table .column-header .separator:horizontal,
+.person-table .column-drag-line,
+.person-table .column-resize-line {
+    -fx-background-color: rgba(133, 30, 145, 0.5) !important;
+}
+
+/* Column drag drop indicators */
+.person-table .table-view .column-header .separator:drag-over {
+    -fx-background-color: rgba(133, 30, 145, 0.5) !important;
+}
+
+/* Alternative separator selectors */
+.person-table .separator,
+.person-table .table-view .separator,
+.person-table .table-view .column-header .label,
+.person-table .table-view .column-header .label:hover,
+.person-table .table-view .column-header .label:drag-over {
+    -fx-background-color: rgba(133, 30, 145, 0.5);
+}
+
+/* JavaFX TableView column drag specific styling */
+.person-table .table-view .column-header .separator .line,
+.person-table .table-view .column-header .separator .line:vertical {
+    -fx-background-color: rgba(133, 30, 145, 0.5) !important;
+}
+
+/* Force override for all separator elements */
+.person-table * .separator,
+.person-table * .separator * {
+    -fx-background-color: rgba(133, 30, 145, 0.5) !important;
 }
 
 

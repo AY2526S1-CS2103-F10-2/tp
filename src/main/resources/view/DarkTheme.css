@@ -216,6 +216,14 @@
     -fx-background-color: #000000;
 }
 
+.menu-bar .menu:hover,
+.menu-bar .menu:showing,
+.menu-bar .menu:focused,
+.menu-bar .menu:armed {
+    -fx-background-color: rgba(133, 30, 145, 0.5);
+    -fx-text-fill: white;
+}
+
 .menu-bar .label {
     -fx-font-size: 14pt;
     -fx-font-family: "Roboto Condensed", sans-serif;
@@ -234,7 +242,13 @@
 }
 
 .menu-item:hover {
-    -fx-background-color: rgba(133, 30, 145, 0.5);
+    -fx-background-color: rgba(133, 30, 145, 0.5) !important;
+}
+
+.menu-item:armed,
+.menu-item:focused {
+    -fx-background-color: #606060;
+    -fx-text-fill: black;
 }
 
 /*
