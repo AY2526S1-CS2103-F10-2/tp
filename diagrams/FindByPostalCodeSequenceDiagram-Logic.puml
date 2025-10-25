@@ -1,0 +1,69 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "fcp:FindCommandParser" as FindCommandParser LOGIC_COLOR
+participant "f:FindCommand" as FindCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant ":PersonContainsKeywordsPredicate" as Predicate MODEL_COLOR
+end box
+
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("find pc/...")
+activate AddressBookParser
+
+create FindCommandParser
+AddressBookParser -> FindCommandParser : new FindCommandParser()
+activate FindCommandParser
+FindCommandParser --> AddressBookParser
+deactivate FindCommandParser
+
+AddressBookParser -> FindCommandParser : fcp.parse(args)
+activate FindCommandParser
+create Predicate
+FindCommandParser -> Predicate : new PersonContainsKeywordsPredicate(postalCodePrefixes)
+Predicate --> FindCommandParser : predicate
+deactivate Predicate
+
+create FindCommand
+FindCommandParser -> FindCommand : new FindCommand(predicate)
+FindCommandParser --> AddressBookParser : FindCommand
+deactivate FindCommandParser
+destroy FindCommandParser
+
+AddressBookParser --> LogicManager : FindCommand
+deactivate AddressBookParser
+
+LogicManager -> FindCommand : execute(Model)
+activate FindCommand
+
+FindCommand -> Model : updateFilteredPersonList(Predicate)
+activate Model
+loop for each person in address book
+    Model -> Predicate : test(person)
+    activate Predicate
+    Predicate --> Model : true/false
+    deactivate Predicate
+end
+Model --> FindCommand : filtered list updated
+deactivate Model
+
+create CommandResult
+FindCommand -> CommandResult : new CommandResult("X persons listed")
+activate CommandResult
+CommandResult --> FindCommand : CommandResult
+deactivate CommandResult
+
+FindCommand --> LogicManager : CommandResult
+deactivate FindCommand
+
+deactivate LogicManager
+@enduml
