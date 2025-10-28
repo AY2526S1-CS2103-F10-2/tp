@@ -145,7 +145,10 @@
     },
     {
       "src": "team/kin-chong.md",
-      "headings": {},
+      "title": "Casey's Project Portfolio Page",
+      "headings": {
+        "project-propertypal": "Project: PropertyPal"
+      },
       "headingKeywords": {}
     }
   ]
