@@ -5,14 +5,7 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 AddressBook *-right-> "1" UniquePersonList
-AddressBook *-right-> "1" UniqueTagList
-UniqueTagList -[hidden]down- UniquePersonList
-UniqueTagList -[hidden]down- UniquePersonList
-
-UniqueTagList -right-> "*" Tag
 UniquePersonList -right-> Person
-
-Person -up-> "*" Tag
 
 Person *--> Name
 Person *--> Phone
@@ -26,5 +19,4 @@ Person *--> Intention
 Address -[hidden]right-> Price
 Price -[hidden]right-> PropertyType
 PropertyType -[hidden]right-> Intention
-
 @enduml
