@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Price;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -175,8 +177,23 @@ public class ModelManager implements Model {
             if (cmp != 0) {
                 return cmp;
             }
-            return p1.getEmail().value.compareToIgnoreCase(p2.getEmail().value);
+            cmp = p1.getEmail().value.compareToIgnoreCase(p2.getEmail().value);
+            if (cmp != 0) {
+                return cmp;
+            }
+            cmp = comparePrices(p1.getPrice(), p2.getPrice());
+            if (cmp != 0) {
+                return cmp;
+            }
+            return p1.getPropertyType().value.compareToIgnoreCase(p2.getPropertyType().value);
         });
     }
 
+    private int comparePrices(Price price1, Price price2) {
+        // Remove commas and parse as BigDecimal for accurate numerical comparison
+        assert Price.isValidPrice(price1.value) && Price.isValidPrice(price2.value) : "price values should be valid";
+        BigDecimal num1 = new BigDecimal(price1.value.replace(",", ""));
+        BigDecimal num2 = new BigDecimal(price2.value.replace(",", ""));
+        return num1.compareTo(num2);
+    }
 }

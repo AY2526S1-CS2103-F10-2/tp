@@ -173,4 +173,55 @@ public class ModelManagerTest {
 
     }
 
+    @Test
+    public void sortFilteredPersonListByName_sortsByPriceWhenOtherFieldsIdentical() {
+        Person alice1 = new PersonBuilder(ALICE).withPrice("500000").build();
+        Person alice2 = new PersonBuilder(ALICE).withPrice("1000000").build();
+        Person alice3 = new PersonBuilder(ALICE).withPrice("750000").build();
+        Person alice4 = new PersonBuilder(ALICE).withPrice("600,000").build(); // sort by commas
+        Person alice5 = new PersonBuilder(ALICE).withPrice("2,000,000").build();
+
+        AddressBook addressBook = new AddressBookBuilder()
+                .withPerson(alice2)
+                .withPerson(alice4)
+                .withPerson(alice3)
+                .withPerson(alice5)
+                .withPerson(alice1)
+                .build();
+        ModelManager modelManager = new ModelManager(addressBook, new UserPrefs());
+
+        modelManager.sortFilteredPersonListByName();
+
+        assertEquals(alice1, modelManager.getFilteredPersonList().get(0));
+        assertEquals(alice4, modelManager.getFilteredPersonList().get(1));
+        assertEquals(alice3, modelManager.getFilteredPersonList().get(2));
+        assertEquals(alice2, modelManager.getFilteredPersonList().get(3));
+        assertEquals(alice5, modelManager.getFilteredPersonList().get(4));
+    }
+
+    @Test
+    public void sortFilteredPersonListByName_sortsByPropertyTypeWhenPriceIdentical() {
+        Person alice1 = new PersonBuilder(ALICE).withPropertyType("hdb").build();
+        Person alice2 = new PersonBuilder(ALICE).withPropertyType("condo").build();
+        Person alice3 = new PersonBuilder(ALICE).withPropertyType("landed").build();
+        Person alice4 = new PersonBuilder(ALICE).withPropertyType("condominium").build();
+        Person alice5 = new PersonBuilder(ALICE).withPropertyType("HDB3").build();
+
+        AddressBook addressBook = new AddressBookBuilder()
+                .withPerson(alice1)
+                .withPerson(alice2)
+                .withPerson(alice3)
+                .withPerson(alice4)
+                .withPerson(alice5)
+                .build();
+        ModelManager modelManager = new ModelManager(addressBook, new UserPrefs());
+
+        modelManager.sortFilteredPersonListByName();
+
+        assertEquals(alice2, modelManager.getFilteredPersonList().get(0));
+        assertEquals(alice4, modelManager.getFilteredPersonList().get(1));
+        assertEquals(alice1, modelManager.getFilteredPersonList().get(2));
+        assertEquals(alice5, modelManager.getFilteredPersonList().get(3));
+        assertEquals(alice3, modelManager.getFilteredPersonList().get(4));
+    }
 }

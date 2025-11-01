@@ -12,7 +12,7 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons";
+    public static final String MESSAGE_SUCCESS = "Listed all %d contacts";
 
 
     @Override
@@ -20,6 +20,7 @@ public class ListCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.sortFilteredPersonListByName();
-        return new CommandResult(MESSAGE_SUCCESS);
+        int size = model.getFilteredPersonList().size();
+        return new CommandResult(String.format(MESSAGE_SUCCESS, size));
     }
 }
