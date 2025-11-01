@@ -18,7 +18,6 @@ Class Address
 Class Email
 Class Name
 Class Phone
-Class Tag
 Class Price
 Class PropertyType
 Class Intention
@@ -44,7 +43,6 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
-Person *--> "*" Tag
 Person *--> "1" Price
 Person *--> PropertyType
 Person *--> "1" Intention

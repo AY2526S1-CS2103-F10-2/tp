@@ -55,6 +55,7 @@
         "appendix-proposed-future-features": "Appendix: Proposed future features",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-find-by-area-feature-postal-code-prefix": "[Proposed] Find by Area Feature (Postal Code Prefix)",
+        "proposed-track-offers-feature": "[Proposed] Track Offers Feature",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
         "user-stories": "User stories",
@@ -63,7 +64,11 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person"
+        "adding-a-person": "Adding a Person",
+        "editing-a-person": "Editing a Person",
+        "finding-persons": "Finding Persons",
+        "deleting-a-person": "Deleting a person",
+        "clearing-all-entries": "Clearing All Entries"
       },
       "headingKeywords": {}
     },
