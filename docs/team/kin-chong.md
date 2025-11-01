@@ -1,6 +1,6 @@
 ---
-  layout: default.md
-  title: "Casey's Project Portfolio Page"
+layout: default.md
+title: "Casey's Project Portfolio Page"
 ---
 
 ### Project: PropertyPal
