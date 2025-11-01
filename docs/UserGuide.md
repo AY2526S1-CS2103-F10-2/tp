@@ -183,9 +183,6 @@ Format: `find [i/INTENTION]…​ [n/NAME]…​ [p/PHONE_NUMBER]…​ [e/EMAIL
 
 Examples:
 * `find n/Alex` — finds persons whose name contains “alex”.
-* `find p/9123` — finds persons whose phone number contains “9123”.
-* `find e/gmail` — finds persons whose email contains “gmail”.
-* `find a/Clementi` — finds persons whose address contains “Clementi”.
 * `find n/John p/9123` — finds persons whose name, phone match any of the given keywords.<br>
   ![result for 'find n/John p/9123'](images/findJohn9123Result.png)
 
@@ -211,7 +208,6 @@ Examples:
 * `find n/Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 * `delete n/John Doe` deletes the person named John Doe.
 * `delete n/John Doe n/Jane Smith` shows a confirmation message listing both persons; re-run with `yes` to proceed.
-* `delete n/John Doe n/Jane Smith`, press `Enter`, then type `yes` and press `Enter` again; this deletes both John Doe and Jane Smith.
 
 ### Clearing all entries : `clear`
 
